@@ -33,8 +33,11 @@ def draw_contours(img, contours):
 
 
 def show(title, img):
-    resized = cv2.resize(cv2.GaussianBlur(img, (3,3), .5), (640,480))
-    cv2.imshow(title, resized)
+    if img.shape == (640,480):
+        cv2.imshow(img)
+    else:
+        resized = cv2.resize(cv2.GaussianBlur(img, (3,3), .5), (640,480))
+        cv2.imshow(title, resized)
 
     
 def find_page_with_morphology(img):
